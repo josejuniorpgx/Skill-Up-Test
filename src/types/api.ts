@@ -9,6 +9,8 @@
  * @property {string} [message] - A message from the API, typically used for errors or status descriptions.
  */
 export interface ApiResponse<T> {
+    error: string;
+    success: boolean;
     data: T;
     status?: number;
     message?: string;

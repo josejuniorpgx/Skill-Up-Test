@@ -51,3 +51,53 @@ export interface SurveyAnalytics {
     responseCount: number;
     completionRate: number;
 }
+
+export interface CreateSurveyRequest {
+    managerId: string;
+    teamMembers: Array<{
+        name: string;
+        email: string;
+    }>;
+}
+
+export interface TeamMemberResponse {
+    id: string;
+    name: string;
+    email: string;
+    surveyLink: string;
+    hasCompleted: boolean;
+}
+
+export interface CreateSurveyResponse {
+    surveyId: string;
+    teamMembers: TeamMemberResponse[];
+}
+
+export interface SurveyQuestion {
+    id: string;
+    questionText: string;
+    questionOrder: number;
+    scaleMin: number;
+    scaleMax: number;
+    scaleMinLabel: string;
+    scaleMaxLabel: string;
+}
+
+export interface SurveyDataResponse {
+    surveyTitle: string;
+    description: string;
+    teamMemberName: string;
+    hasCompleted: boolean;
+    questions: SurveyQuestion[];
+}
+
+export interface SubmitResponseRequest {
+    responses: Array<{
+        questionId: string;
+        rating: number;
+    }>;
+}
+
+export interface SubmitResponseResponse {
+    message: string;
+}

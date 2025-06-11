@@ -11,6 +11,7 @@ import {HeroSection} from "@/components/pages/home/HeroSection";
 import {TeamSetup} from "@/components/pages/home/TeamSetup";
 import {AnalyticsReport} from "@/components/pages/home/AnalyticsReport";
 import {ResponseCollection} from "@/components/pages/home/ResponseCollection";
+import {useSurvey} from "@/hooks/useSurvey";
 
 type DashboardStep = 'setup' | 'distribution' | 'collection' | 'analytics';
 
@@ -18,22 +19,35 @@ export function HomeView() {
     const [currentStep, setCurrentStep] = useState<DashboardStep>('setup');
     const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [surveyId, setSurveyId] = useState<string>('');
+    const {createSurvey, loading, error, surveyData} = useSurvey();
+
 
     const handleTeamSetupSubmit = async (members: TeamMember[]) => {
+        if (!members || !Array.isArray(members) || members.length === 0) {
+            console.error('Invalid members data:', members);
+            return;
+        }
+
         setIsLoading(true);
+
         try {
-            // Todo: Add Api
-            const membersWithLinks = members.map(member => ({
-                ...member,
-                surveyLink: `${window.location.origin}/survey/${member.id}`,
-                hasCompleted: false
-            }));
-
-            setTeamMembers(membersWithLinks);
+            const validMembers = members.filter(member =>
+                member && member.name && member.email
+            );
+            if (validMembers.length === 0) {
+                throw new Error('No valid team members provided');
+            }
+            const result = await createSurvey(
+                "manager123", // O obtener de contexto de auth
+                validMembers.map(member => ({
+                    name: member.name,
+                    email: member.email
+                }))
+            );
+            setTeamMembers(result.teamMembers);
+            setSurveyId(result.surveyId);
             setCurrentStep('distribution');
-
-            // Todo: Add API call to create survey
-            // const response = await api.createSurvey(members);
 
         } catch (error) {
             console.error('Error creating survey:', error);
@@ -41,6 +55,7 @@ export function HomeView() {
             setIsLoading(false);
         }
     };
+
 
     return (
         <div className={styles.dashboard}>
@@ -72,7 +87,7 @@ export function HomeView() {
                             )}
 
                             {currentStep === 'analytics' && (
-                                <AnalyticsReport teamMembers={teamMembers}/>
+                                <AnalyticsReport surveyId={surveyId} />
                             )}
                         </Grid.Col>
 

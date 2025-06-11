@@ -1,9 +1,9 @@
-import {ApiResponse, AxiosApiService } from "@/types/api";
+import {ApiResponse, AxiosApiService} from "@/types/api";
 import myApiClient from "./myApiClient";
-import { AxiosResponse } from "axios";
+import {AxiosResponse} from "axios";
 
-
-export const myApiPublicService: AxiosApiService = {
+//todo: Fix Types.
+export const myApiService: AxiosApiService = {
     get: async <T>(endpoint: string): Promise<ApiResponse<T>> => {
         return await myApiClient.get<T>(`/${endpoint}`);
     },
@@ -33,6 +33,6 @@ export const myApiPublicService: AxiosApiService = {
     },
 
     search: async <T>(endpoint: string, params: Record<string, any>): Promise<ApiResponse<T>> => {
-        return await myApiClient.get<T>(`/${endpoint}`, { params });
+        return await myApiClient.get<T>(`/${endpoint}`, {params});
     },
 };
