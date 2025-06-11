@@ -3,6 +3,15 @@
 This is a template for [Next.js](https://nextjs.org/) app router + [Mantine](https://mantine.dev/).
 If you want to use pages router instead, see [next-pages-template](https://github.com/mantinedev/next-pages-template).
 
+## Add  .env file
+Create a `.env` file in the root of the project and add your environment variables. For example:
+
+```env
+# Backend
+BACKEND_API_URL=http://localhost:8000
+APP_BASE_URL=http://localhost:3000
+```
+
 ## Features
 
 This template comes with the following features:
