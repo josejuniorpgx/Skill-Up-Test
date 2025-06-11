@@ -1,12 +1,10 @@
-import {Welcome} from "@/components/common/Welcome/Welcome";
-import {ColorSchemeToggle} from "@/components/common/ColorSchemeToggle/ColorSchemeToggle";
+import {HomeView} from "@/components/pages/home";
 
 
 export default function HomePage() {
-  return (
-    <>
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
-  );
+    return (
+        <>
+            <HomeView/>
+        </>
+    );
 }
