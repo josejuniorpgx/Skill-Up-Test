@@ -1,0 +1,12 @@
+[data-mantine-color-scheme="light"] .NavBarContainer {
+    color: black;
+    background-color: var(--mantine-color-gray-0);
+    border-right: 1px solid var(--mantine-color-gray-2);
+    box-shadow: 0 0 10px var(--mantine-color-gray-4);
+}
+
+[data-mantine-color-scheme="dark"] .NavBarContainer {
+    color: white;
+    border-right: 1px solid var(--mantine-color-dark-5);
+    box-shadow: 0 0 10px var(--mantine-color-dark-9);
+}
