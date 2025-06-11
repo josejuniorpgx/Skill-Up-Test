@@ -1,4 +1,3 @@
-// src/components/TeamSetup/TeamSetup.tsx
 import {useState} from 'react';
 import {
     Paper,

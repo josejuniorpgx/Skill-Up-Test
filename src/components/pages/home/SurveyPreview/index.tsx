@@ -1,5 +1,4 @@
-// src/components/SurveyPreview/SurveyPreview.tsx
-import { useState } from 'react';
+import {useState} from 'react';
 import {
     Container,
     Paper,
@@ -58,7 +57,7 @@ const defaultQuestions: SurveyQuestion[] = [
     }
 ];
 
-export function SurveyPreview({ questions = defaultQuestions, isPreview = true }: SurveyPreviewProps) {
+export function SurveyPreview({questions = defaultQuestions, isPreview = true}: SurveyPreviewProps) {
     const [responses, setResponses] = useState<Record<string, string>>({});
 
     const handleResponseChange = (questionId: string, value: string) => {
@@ -90,7 +89,7 @@ export function SurveyPreview({ questions = defaultQuestions, isPreview = true }
                 <div className={styles.previewContainer}>
                     <Paper className={styles.surveyCard}>
                         <div className={styles.surveyHeader}>
-                            <IconQuestionMark size={48} className={styles.icon} />
+                            <IconQuestionMark size={48} className={styles.icon}/>
                             <Title order={3} className={styles.surveyTitle}>
                                 Leadership Feedback Survey
                             </Title>
@@ -114,7 +113,7 @@ export function SurveyPreview({ questions = defaultQuestions, isPreview = true }
                                                 className={styles.radioGroup}
                                             >
                                                 <Group className={styles.radioContainer}>
-                                                    {Array.from({ length: question.scale.max - question.scale.min + 1 }, (_, i) => {
+                                                    {Array.from({length: question.scale.max - question.scale.min + 1}, (_, i) => {
                                                         const value = String(question.scale!.min + i);
                                                         return (
                                                             <Radio

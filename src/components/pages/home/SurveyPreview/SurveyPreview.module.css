@@ -1,5 +1,3 @@
-/* src/components/SurveyPreview/SurveyPreview.module.css */
-
 .section {
     background-color: #ffffff;
     padding: 2rem 1.5rem;
@@ -66,7 +64,6 @@
 }
 
 .questionBlock {
-    /* Contenedor de cada pregunta */
 }
 
 .questionText {
@@ -86,7 +83,6 @@
 }
 
 .radioOption {
-    /* Estilos personalizados para radio buttons si es necesario */
 }
 
 .scaleLabels {

@@ -1,4 +1,3 @@
-// src/components/Sidebar/Sidebar.tsx
 import {Paper, Title, Badge, Text, Group} from '@mantine/core';
 import {IconChevronRight} from '@tabler/icons-react';
 import styles from './SideBar.module.css';

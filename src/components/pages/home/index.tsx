@@ -9,6 +9,8 @@ import {Sidebar} from "@/components/pages/home/Sidebar";
 import {SurveyPreview} from "@/components/pages/home/SurveyPreview";
 import {HeroSection} from "@/components/pages/home/HeroSection";
 import {TeamSetup} from "@/components/pages/home/TeamSetup";
+import {AnalyticsReport} from "@/components/pages/home/AnalyticsReport";
+import {ResponseCollection} from "@/components/pages/home/ResponseCollection";
 
 type DashboardStep = 'setup' | 'distribution' | 'collection' | 'analytics';
 
@@ -20,7 +22,7 @@ export function HomeView() {
     const handleTeamSetupSubmit = async (members: TeamMember[]) => {
         setIsLoading(true);
         try {
-            // Simular API call para generar links únicos
+            // Todo: Add Api
             const membersWithLinks = members.map(member => ({
                 ...member,
                 surveyLink: `${window.location.origin}/survey/${member.id}`,
@@ -30,7 +32,7 @@ export function HomeView() {
             setTeamMembers(membersWithLinks);
             setCurrentStep('distribution');
 
-            // Aquí harías la llamada real a la API
+            // Todo: Add API call to create survey
             // const response = await api.createSurvey(members);
 
         } catch (error) {
@@ -86,26 +88,6 @@ export function HomeView() {
     );
 }
 
-// Componentes placeholder para los otros pasos
 
-function ResponseCollection({teamMembers, onComplete}: {
-    teamMembers: TeamMember[];
-    onComplete: () => void;
-}) {
-    return (
-        <div>
-            <h3>Response Collection - Coming Soon</h3>
-            <p>Waiting for {teamMembers.length} responses</p>
-            <button onClick={onComplete}>Complete</button>
-        </div>
-    );
-}
 
-function AnalyticsReport({teamMembers}: { teamMembers: TeamMember[] }) {
-    return (
-        <div>
-            <h3>Analytics Report - Coming Soon</h3>
-            <p>Results for {teamMembers.length} team members</p>
-        </div>
-    );
-}
+

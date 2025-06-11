@@ -1,4 +1,3 @@
-// src/components/SurveyDistribution/SurveyDistribution.tsx
 import {useState} from 'react';
 import {
     Paper,
