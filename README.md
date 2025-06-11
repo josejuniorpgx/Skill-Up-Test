@@ -8,7 +8,7 @@ Create a `.env` file in the root of the project and add your environment variabl
 
 ```env
 # Backend
-BACKEND_API_URL=http://localhost:8000
+BACKEND_API_URL=http://localhost:8000/api/v1
 APP_BASE_URL=http://localhost:3000
 ```
 
